@@ -15,7 +15,9 @@ export default {
 setup(){
   const asideVisible=inject<Ref<boolean>>('xxx') //get
   const toggle=()=>{
-   asideVisible.value=!asideVisible.value
+    if(asideVisible) {
+      asideVisible.value = !asideVisible.value
+    }
   }
   return {toggle}
 }

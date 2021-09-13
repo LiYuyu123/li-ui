@@ -11,7 +11,7 @@ export default {
   props:{
     value:Boolean
   },
-  setup(props,context){
+  setup(props:any,context:any){
     const onClick=()=>{
       context.emit('update:value',!props.value)
     }
