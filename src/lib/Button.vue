@@ -46,5 +46,22 @@ $radius: 4px;
   &::-moz-focus-inner {//此功能是非标准的，不在标准轨道上。
     border: 0;
   }
+  &.gulu-theme-link{
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+    &:hover,&:focus{
+      color: lighten($blue, 10%);
+    }
+  }
+  &.gulu-theme-text {
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+
+    &:hover, &:focus {
+      background: darken(white, 5%);;
+    }
+  }
 }
 </style>
