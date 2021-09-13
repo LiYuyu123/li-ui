@@ -1,6 +1,7 @@
 <template>
     <button class="gulu-button"
             :class="classes"
+            :disabled="disable"
     >
       <slot/>
     </button>
@@ -11,7 +12,8 @@ export  default {
  props:{
    theme:{type:String,default:'button'},
    size:{type:String,default:'normal'},
-   level:{type:String,default:'normal'}
+   level:{type:String,default:'normal'},
+   disable:{type:Boolean,default:false}
  },
   setup(props:any){
    const {size,theme,level}=props
@@ -33,6 +35,7 @@ $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
 $red:red;
+$grey: grey;
 .gulu-button {
   box-sizing: border-box;
   height: $h;
@@ -134,6 +137,21 @@ $red:red;
       &:focus {
         color: darken($red, 10%);
       }
+    }
+  }
+  &.gulu-theme-button {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
+      &:hover {
+        border-color: $grey;
+      }
+    }
+  }
+  &.gulu-theme-link, &.gulu-theme-text {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
     }
   }
 }
