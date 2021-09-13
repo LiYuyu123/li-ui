@@ -5,12 +5,16 @@
 </template>
 <script lang="ts">
 import  {ref,provide} from 'vue';
+import {router} from './router';
 
 export default {
   name:'APP',
   setup(){
-    const asideVisible=ref(false)
+    const asideVisible=ref(true)
     provide('xxx',asideVisible)
-  } //set
+    router.afterEach(()=>{
+      asideVisible.value=false
+    })
+  }
 }
 </script>
