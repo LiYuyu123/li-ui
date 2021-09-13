@@ -10,10 +10,13 @@ import {router} from './router';
 export default {
   name:'APP',
   setup(){
-    const asideVisible=ref(true)
+    const width=document.documentElement.clientWidth
+    const asideVisible=ref(width >= 500)
     provide('xxx',asideVisible)
-    router.afterEach(()=>{
-      asideVisible.value=false
+    router.afterEach(()=>{ //路由切换时就为false
+      if(width<=500){
+        asideVisible.value=false
+      }
     })
   }
 }
