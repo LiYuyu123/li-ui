@@ -13,7 +13,7 @@ export default {
   },
   setup(props,context){
     const onClick=()=>{
-      context.emit('input',!props.value)
+      context.emit('update:value',!props.value)
     }
     return {onClick}
   }
@@ -26,7 +26,7 @@ button{
   height: $h;
   width: $h*2;
   border: none;
-  background: gray;
+  background: rgb(191, 191, 191);
   border-radius: $h/2;
   position: relative;
 }
@@ -38,12 +38,18 @@ span{
   width: $h2;
   background:white;
   border-radius: $h2 / 2;
-  transition: left 250ms;
+  transition: all 250ms;
 }
 button.checked{
-    background: blue;
+  background: #1890ff;
 }
-button.checked>span{
+button.checked > span {
   left: calc(100% - #{$h2} - 2px);
+}
+button:active{
+  > span {width: $h2 + 4px;}
+}
+button.checked:active{
+  > span {width: $h2 + 4px; margin-left: -4px;}
 }
 </style>
