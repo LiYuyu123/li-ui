@@ -1,18 +1,21 @@
 <template>
   <div>
-    <button  @click="onClick" :class="{checked}"><span></span></button>
+    <button  @click="onClick" :class="{checked:value}"><span></span></button>
   </div>
+  {{value}}
 </template>
 <script lang="ts">
-import {ref} from 'vue';
+
 
 export default {
-  setup(){
-    const checked=ref(false)
+  props:{
+    value:Boolean
+  },
+  setup(props,context){
     const onClick=()=>{
-      checked.value=!checked.value
+      context.emit('input',!props.value)
     }
-    return {x: checked,onClick}
+    return {onClick}
   }
 }
 </script>
@@ -35,6 +38,7 @@ span{
   width: $h2;
   background:white;
   border-radius: $h2 / 2;
+  transition: left 250ms;
 }
 button.checked{
     background: blue;
