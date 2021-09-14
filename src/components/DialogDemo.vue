@@ -4,7 +4,10 @@
     <Button @click="onClick">toggle</Button>
     <Dialog v-model:visible="x"
             :ok="f1" :cancel="f2"
-    ></Dialog>
+    >
+      <template v-slot:title><div>标题</div></template>
+      <template v-slot:content><div>第一行字</div></template>
+    </Dialog>
 
 </template>
 <script lang="ts">
