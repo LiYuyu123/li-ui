@@ -5,8 +5,8 @@
            :class="{selected:t===selected}"
            v-for="(t,index) in titles " :key="index"
            :ref="el=>{
-             if(el){
-               navDivs[index]=el
+             if(t===selected){
+               selectedItem=el
            }
            } "
            @click="select(t)"
@@ -23,7 +23,7 @@
 </template>
 <script lang="ts">
 import Tab from '../lib/Tab.vue';
-import {computed, onMounted, onUpdated, ref} from 'vue';
+import {onMounted, ref, watchEffect} from 'vue';
 
 export default {
   props: {
@@ -33,26 +33,30 @@ export default {
   },
   components: {Tab},
   setup(props: any, context: any) {
-    const navDivs = ref<HTMLDivElement[]>([]);
+    const selectedItem = ref<HTMLDivElement | null>(null);
     const indicator = ref<HTMLDivElement | null>(null);
     const container = ref<HTMLDivElement | null>(null);
     const defaults = context.slots.default();
     const x=()=>{
-      const divs = navDivs.value;
-      const div = divs.filter(d => d.classList.contains('selected'))[0];
-      const {width} = div.getBoundingClientRect();
-      const {left: left2} = div.getBoundingClientRect();
-      if (container.value) {
-        const {left: left1} = container.value.getBoundingClientRect();
-        const left= left2-left1
-        if (indicator.value) {
-          indicator.value.style.width = width + 'px';
-          indicator.value.style.left=left+'px'
+      const div = selectedItem.value;
+      if(div){
+        const {width} = div.getBoundingClientRect();
+        const {left: left2} = div.getBoundingClientRect();
+        if (container.value) {
+          const {left: left1} = container.value.getBoundingClientRect();
+          const left= left2-left1
+          if (indicator.value) {
+            indicator.value.style.width = width + 'px';
+            indicator.value.style.left=left+'px'
+          }
         }
       }
     }
-    onMounted(x);
-    onUpdated(x)
+
+    onMounted(()=>{
+      watchEffect(x)
+    });
+
 
     defaults.forEach((i: { type: any }) => {
       if (i.type !== Tab) {
@@ -62,15 +66,11 @@ export default {
     const select = (title: string) => {
       context.emit('update:selected', title);
     };
-    const current = computed(() => {
-      return defaults.filter((tab: { props: { title: any } }) => {
-        return tab.props.title === props.selected;
-      })[0];
-    });
+
     const titles = defaults.map((tab: { props: { title: any } }) => {
       return tab.props.title;
     });
-    return {defaults, titles, current, select, navDivs, indicator, container};
+    return {defaults, titles, select, selectedItem, indicator, container};
   }
 };
 </script>
