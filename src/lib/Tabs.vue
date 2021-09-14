@@ -1,11 +1,18 @@
 <template>
   <div class="gulu-tabs">
-    <div class="gulu-tabs-nav">
+    <div class="gulu-tabs-nav" ref="container">
       <div class="gulu-tabs-nav-item"
            :class="{selected:t===selected}"
            v-for="(t,index) in titles " :key="index"
+           :ref="el=>{
+             if(el){
+               navDivs[index]=el
+           }
+           } "
            @click="select(t)"
-      >{{t}}</div>
+      >{{ t }}
+      </div>
+      <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="gulu-tabs-content">
       <component class="gulu-tabs-content-item"
@@ -15,35 +22,57 @@
   </div>
 </template>
 <script lang="ts">
-import Tab from '../lib/Tab.vue'
-import {computed} from 'vue';
+import Tab from '../lib/Tab.vue';
+import {computed, onMounted, onUpdated, ref} from 'vue';
+
 export default {
-  props:{
-    selected:{
-      type:String
+  props: {
+    selected: {
+      type: String
     }
   },
-  components:{Tab},
-  setup(props:any,context:any){
-    const defaults=context.slots.default()
-    defaults.forEach((i: { type: any })=>{
-      if(i.type!==Tab){
-        throw new Error('Tabs 子标签必须是 Tab')
+  components: {Tab},
+  setup(props: any, context: any) {
+    const navDivs = ref<HTMLDivElement[]>([]);
+    const indicator = ref<HTMLDivElement | null>(null);
+    const container = ref<HTMLDivElement | null>(null);
+    const defaults = context.slots.default();
+    const x=()=>{
+      const divs = navDivs.value;
+      const div = divs.filter(d => d.classList.contains('selected'))[0];
+      const {width} = div.getBoundingClientRect();
+      const {left: left2} = div.getBoundingClientRect();
+      if (container.value) {
+        const {left: left1} = container.value.getBoundingClientRect();
+        const left= left2-left1
+        if (indicator.value) {
+          indicator.value.style.width = width + 'px';
+          indicator.value.style.left=left+'px'
+        }
       }
-    })
-    const select=(title:string)=>{
-      console.log('1')
-      context.emit('update:selected',title)
     }
-    const current=computed(()=>{
-      return defaults.filter((tab: { props: { title: any } })=> {return tab.props.title===props.selected})[0]
-    })
-    const titles= defaults.map((tab: { props: { title:any } })=>{
-      return tab.props.title
-    })
-    return {defaults,titles,current,select}
+    onMounted(x);
+    onUpdated(x)
+
+    defaults.forEach((i: { type: any }) => {
+      if (i.type !== Tab) {
+        throw new Error('Tabs 子标签必须是 Tab');
+      }
+    });
+    const select = (title: string) => {
+      context.emit('update:selected', title);
+    };
+    const current = computed(() => {
+      return defaults.filter((tab: { props: { title: any } }) => {
+        return tab.props.title === props.selected;
+      })[0];
+    });
+    const titles = defaults.map((tab: { props: { title: any } }) => {
+      return tab.props.title;
+    });
+    return {defaults, titles, current, select, navDivs, indicator, container};
   }
-}
+};
 </script>
 <style lang="scss">
 $blue: #40a9ff;
@@ -54,23 +83,40 @@ $border-color: #d9d9d9;
     display: flex;
     color: $color;
     border-bottom: 1px solid $border-color;
+    position: relative;
+
     &-item {
       padding: 8px 0;
       margin: 0 16px;
       cursor: pointer;
+
       &:first-child {
         margin-left: 0;
       }
+
       &.selected {
         color: $blue;
       }
     }
+
+    &-indicator {
+      position: absolute;
+      height: 3px;
+      background: $blue;
+      left: 0;
+      bottom: -1px;
+      width: 100px;
+      transition: all 250ms;
+    }
   }
+
   &-content {
     padding: 8px 0;
-    &-item{
+
+    &-item {
       display: none;
-      &.selected{
+
+      &.selected {
         display: inline-block;
       }
     }
