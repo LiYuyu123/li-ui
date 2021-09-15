@@ -37,24 +37,24 @@ export default {
     const indicator = ref<HTMLDivElement | null>(null);
     const container = ref<HTMLDivElement | null>(null);
     const defaults = context.slots.default();
-    const x=()=>{
+    const action = () => {
       const div = selectedItem.value;
-      if(div){
+      if (div) {
         const {width} = div.getBoundingClientRect();
         const {left: left2} = div.getBoundingClientRect();
         if (container.value) {
           const {left: left1} = container.value.getBoundingClientRect();
-          const left= left2-left1
+          const left = left2 - left1;
           if (indicator.value) {
             indicator.value.style.width = width + 'px';
-            indicator.value.style.left=left+'px'
+            indicator.value.style.left = left + 'px';
           }
         }
       }
-    }
+    };
 
-    onMounted(()=>{
-      watchEffect(x)
+    onMounted(() => {
+      watchEffect(action);
     });
 
 

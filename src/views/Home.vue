@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="topNavAndBanner">
     <TopNav />
     <div class="banner">
       <h1>UI</h1>
@@ -20,24 +20,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.topNavAndBanner{
+  color: #007974;
+  background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
+}
 .banner {
   padding: 100px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: lightgreen;
+  color: #007974;
   > .actions{
     padding: 8px 0;
     a {
-      margin:0 8px;
-      background: #fff;
+      margin: 0 8px;
+      background: #02bcb0;
+      color: white;
       display: inline-block;
-      $h: 28px;
-      height: $h;
-      line-height: $h;
-      border-radius: $h/2;
-      padding: 0 8px;
+      padding: 8px 24px;
+      border-radius: 4px;
+      &:hover{
+        text-decoration: none;
+      }
     }
   }
 }

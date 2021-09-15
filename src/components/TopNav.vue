@@ -26,7 +26,6 @@ setup(){
 
 <style lang="scss" scoped>
 .topNav {
-  background: pink;
   display: flex;
   padding: 16px;
   position: fixed;
