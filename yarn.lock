@@ -1399,6 +1399,11 @@ magic-string@^0.25.7:
   dependencies:
     sourcemap-codec "^1.4.4"
 
+marked@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.npmjs.org/marked/-/marked-3.0.4.tgz#b8a1539e5e05c6ea9e93f15c0bad1d54ce890406"
+  integrity sha512-jBo8AOayNaEcvBhNobg6/BLhdsK3NvnKWJg33MAAPbvTWiG4QBn9gpW1+7RssrKu4K1dKlN+0goVQwV41xEfOA==
+
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.npmjs.org/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
