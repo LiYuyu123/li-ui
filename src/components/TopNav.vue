@@ -1,16 +1,14 @@
 <template>
   <div class="topNav">
     <router-link to="/" class="logo" >
-      <svg class="icon" >
-        <use xlink:href="#icon-wangguan"></use>
-      </svg>
+      <img src="../assets/image/logo2.png" alt="" width="40">
       </router-link>
     <ul class="menu">
       <router-link to="/doc">文档</router-link>
     </ul>
     <span v-if="toggleVisible" class="toggle" @click="toggle">
         <svg class="icon" >
-        <use xlink:href="#icon-menu"></use>
+        <use xlink:href="#icon-menu1"></use>
       </svg>
     </span>
   </div>
@@ -39,33 +37,37 @@ setup(){
 
 <style lang="scss" scoped>
 .icon {
-  width: 1em; height: 1em;
+  width: 25px; height: 25px;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
 }
 .topNav {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
   display: flex;
-  padding: 16px;
+  padding: 2px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 20;
   justify-content: center;
   align-items: center;
+  background: #beedea;
   > .logo {
     max-width: 6em;
     margin-right: auto;
+    padding-top: 2px;
     >svg{
-     width: 32px;
-      height: 32px;
+     width: 40px;
+      height: 40px;
     }
   }
   > .menu {
     display: flex;
     white-space: nowrap;
     flex-wrap: nowrap;
+    color: #007974;
     > li {
       margin: 0 1em;
     }

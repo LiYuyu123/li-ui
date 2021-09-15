@@ -1,6 +1,6 @@
 <template>
   <div class="topNavAndBanner">
-    <TopNav />
+    <TopNav class="topNav"/>
     <div class="banner">
       <div class="image"><img src="src/assets/image/logo.png"  alt=""  width="200"></div>
       <h1>Li UI</h1>
@@ -48,9 +48,13 @@ export default {
 <style lang="scss" scoped>
 .feature{
   margin: 64px auto;
-  width: 400px;
   @media (min-width: 800px) {
     width: 800px;
+    >ul{
+      >li{
+        width: 50%;
+      }
+    }
   }
   @media (min-width: 1200px) {
     width: 1200px;
@@ -85,9 +89,19 @@ export default {
   }
 }
 .topNavAndBanner{
-  color: #007974;
   background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
   clip-path: ellipse(80% 60% at 50% 40%);
+  >.topNav{
+    ::v-deep{
+      background: none;
+      box-shadow: none;
+    }
+  }
+  @media(max-width: 500px) {
+    >.topNav{
+      display: none;
+    }
+  }
 }
 
 
@@ -101,7 +115,6 @@ export default {
   > .actions{
     padding: 8px 0;
     a {
-
       margin: 15px 8px;
       background: #02bcb0;
       color: white;

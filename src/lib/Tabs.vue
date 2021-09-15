@@ -115,7 +115,6 @@ $border-color: #d9d9d9;
 
     &-item {
       display: none;
-
       &.selected {
         display: inline-block;
       }

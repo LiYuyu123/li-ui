@@ -54,7 +54,6 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  z-index: 1000;
   > .nav {
     flex-shrink: 0;
   }
@@ -73,23 +72,25 @@ export default {
     flex-shrink: 0;
   }
   > main {
+    min-width: 100%;
     flex-grow: 1;
     padding: 16px;
     background: white;
   }
 }
 aside {
-  background: lightblue;
-  padding: 16px 0;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+  background: white;
   width: 150px;
   position: fixed;
+  z-index: 10;
   top: 0;
   left: 0;
-  padding-top: 70px;
+  padding: 70px 0 20px;
   height: 100%;
   > h2 {
     margin-bottom: 4px;
-    padding: 0 16px;
+    padding: 0 8px;
   }
   > ol {
     > li {
@@ -99,7 +100,7 @@ aside {
         padding: 4px 16px;
         text-decoration: none;
         &.selected{
-          background: white;
+          background: #f5f5f5;;
         }
       }
 
