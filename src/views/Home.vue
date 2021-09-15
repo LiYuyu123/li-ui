@@ -101,7 +101,8 @@ export default {
   > .actions{
     padding: 8px 0;
     a {
-      margin: 0 8px;
+
+      margin: 15px 8px;
       background: #02bcb0;
       color: white;
       display: inline-block;
