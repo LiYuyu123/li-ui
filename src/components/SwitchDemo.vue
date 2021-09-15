@@ -7,7 +7,6 @@
 </template>
 
 <script lang="ts">
-import {ref} from 'vue';
 import Button from '../lib/Button.vue';
 import Switch1Demo from './Switch1.demo.vue'
 import Switch2Demo from './Switch2.demo.vue'
@@ -16,8 +15,7 @@ export  default {
   name:'SwitchDemo',
   components:{Demo,Button},
   setup(){
-    const boolean=ref(false)
-    return {boolean,Switch2Demo,Switch1Demo}
+    return {Switch2Demo,Switch1Demo}
   }
 }
 </script>
