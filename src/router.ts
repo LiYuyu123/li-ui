@@ -10,16 +10,16 @@ import {h} from 'vue'
 import Markdown from './components/Markdown.vue';
 
 const history=createWebHashHistory()
-
+const md=(path: any)=>h(Markdown,{path:`../markdown/${path}`,key:path})
 export const router=createRouter({
     history:history,
     routes:[
         {path:'/',component:Home},
         {path:'/doc',component:Doc,children:[
                 {path:'',component:DocDemo},
-                {path:'intro',component:h(Markdown,{path:'../markdown/intro.md',key:'1'})},
-                {path:'get-start',component:h(Markdown,{path:'../markdown/getStart.md',key:'2'})},
-                {path:'install',component:h(Markdown,{path:'../markdown/install.md',key:'3'})},
+                {path:'intro',component:md('intro.md')},
+                {path:'get-start',component:md('getStart.md')},
+                {path:'install',component:md('install.md')},
                 {path:'switch',component:SwitchDemo},
                 {path:'button',component:ButtonDemo},
                 {path:'dialog',component:DialogDemo},
