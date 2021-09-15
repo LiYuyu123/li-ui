@@ -2,7 +2,7 @@
   <div class="demo">
     <h2>{{component.__sourceCodeTitle}}</h2>
     <div class="demo-component">
-      <Component :is="component"/>
+      <component :is="component"/>
     </div>
     <div class="demo-actions">
       <Button @click="toggleNameAndCoed">{{nameVisible}}</Button>

@@ -7,13 +7,12 @@
 </template>
 
 <script lang="ts">
-import Button from '../lib/Button.vue';
-import Switch1Demo from './Switch1.demo.vue'
-import Switch2Demo from './Switch2.demo.vue'
+import Switch1Demo from './switch/Switch1.demo.vue'
+import Switch2Demo from './switch/Switch2.demo.vue'
 import Demo from './Demo.vue';
 export  default {
   name:'SwitchDemo',
-  components:{Demo,Button},
+  components:{Demo},
   setup(){
     return {Switch2Demo,Switch1Demo}
   }
