@@ -6,20 +6,20 @@ import ButtonDemo from  './components/ButtonDemo.vue'
 import DialogDemo from  './components/DialogDemo.vue'
 import TabsDemo from  './components/TabsDemo.vue'
 import DocDemo from  './components/DocDemo.vue'
-import Intro from './components/Intro.vue'
-import Install from './components/Install.vue'
-import GetStart from './components/GetStart.vue'
+import {h} from 'vue'
+import Markdown from './components/Markdown.vue';
 
 const history=createWebHashHistory()
+
 export const router=createRouter({
     history:history,
     routes:[
         {path:'/',component:Home},
         {path:'/doc',component:Doc,children:[
                 {path:'',component:DocDemo},
-                {path:'intro',component:Intro},
-                {path:'get-start',component:GetStart},
-                {path:'install',component:Install},
+                {path:'intro',component:h(Markdown,{path:'../markdown/intro.md',key:'1'})},
+                {path:'get-start',component:h(Markdown,{path:'../markdown/getStart.md',key:'2'})},
+                {path:'install',component:h(Markdown,{path:'../markdown/install.md',key:'3'})},
                 {path:'switch',component:SwitchDemo},
                 {path:'button',component:ButtonDemo},
                 {path:'dialog',component:DialogDemo},
