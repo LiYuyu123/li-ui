@@ -1,6 +1,10 @@
 <template>
   <div class="topNav">
-    <div class="logo" >LOGO</div>
+    <div class="logo" >
+      <svg class="icon" >
+        <use xlink:href="#icon-wangguan"></use>
+      </svg>
+    </div>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
@@ -25,6 +29,12 @@ setup(){
 </script>
 
 <style lang="scss" scoped>
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
 .topNav {
   display: flex;
   padding: 16px;
@@ -38,6 +48,10 @@ setup(){
   > .logo {
     max-width: 6em;
     margin-right: auto;
+    >svg{
+     width: 32px;
+      height: 32px;
+    }
   }
   > .menu {
     display: flex;
