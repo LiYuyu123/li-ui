@@ -1,6 +1,6 @@
 # Li UI
 1. 这是一个基于 Vue3 / TypeScript / Scss 开发的UI库，涵盖了 Button、Switch ... 等常见 UI 组件。
-2. 预览地址
+2. 预览地址:https://liyuyu123.github.io/li-ui-website/index.html#/
 ## 使用方法
 ### 安装
 在项目中，使用终端执行以下命令
