@@ -3,13 +3,13 @@
 打开终端运行下列命令：
 
 ```
-npm install li-ui
+npm install lizijie-ui
 ```
 
 或
 
 ```
-yarn add li-ui
+yarn add lizijie-ui
 ```
 
 下一节：[开始使用](#/doc/get-start)

@@ -54,7 +54,7 @@ export default {
     };
 
     onMounted(() => {
-      watchEffect(action);
+      watchEffect(action,{flush:'post'});//表示watchEffect后执行
     });
 
 
