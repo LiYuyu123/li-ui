@@ -46,7 +46,7 @@ export default {
     const toggleMain=()=>{
       const width=document.documentElement.clientWidth
       if(width<=500 && asideVisible){
-        asideVisible.value=!asideVisible.value
+        asideVisible.value=false
       }
     }
     return {asideVisible,toggleMain}
