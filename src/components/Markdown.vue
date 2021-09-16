@@ -4,21 +4,14 @@
 </template>
 
 <script lang="ts">
-import {ref} from 'vue';
+
 
 export default {
   props:{
-    path:{
+    content:{
       type:String,
       required:true
     }
-  },
-  setup(props:any){
-    const content =ref(null)
-    import(props.path).then((resolve)=>{
-      content.value=resolve.default
-    })
-    return {content}
   }
 }
 </script>

@@ -10,8 +10,8 @@
             <slot name="content"/>
           </main>
           <footer>
-            <Button @click="cancel">取消</Button>
-            <Button @click="ok" level="main">确定</Button>
+            <Button @click="dialogCancel">取消</Button>
+            <Button @click="dialogOk" level="main">确定</Button>
           </footer>
         </div>
       </div>
@@ -47,17 +47,17 @@ export default {
        onClick()
      }
     }
-    const ok=()=>{
+    const dialogOk=()=>{
       if(props.ok  && props.ok()!==false){
         onClick()
       }
     }
-    const cancel=()=>{
-      props.cancel  && props.cancel()
+    const dialogCancel=()=>{
+      props.cancel  && props.cancel() //props.cancel?.()
       onClick()
 
     }
-    return {onClick,onClickOverlay,ok,cancel}
+    return {onClick,onClickOverlay,dialogOk,dialogCancel}
   }
 }
 </script>

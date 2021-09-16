@@ -11,7 +11,7 @@ export default {
   name:'APP',
   setup(){
     const width=document.documentElement.clientWidth
-    const asideVisible=ref(width >= 500)
+    const asideVisible=ref(width >= 500)//大于500为true,小于500则为false
     provide('xxx',asideVisible)
     router.afterEach(()=>{ //路由切换时就为false
       if(width<=500){

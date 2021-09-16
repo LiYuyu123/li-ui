@@ -31,7 +31,7 @@
           </li>
         </ol>
       </aside>
-      <main>
+      <main @click="toggleMain">
         <router-view/>
       </main>
     </div>
@@ -43,7 +43,13 @@ import {inject, Ref} from 'vue';
 export default {
   setup(){
     const asideVisible=inject<Ref<boolean>>('xxx') //get
-    return {asideVisible}
+    const toggleMain=()=>{
+      const width=document.documentElement.clientWidth
+      if(width<=500 && asideVisible){
+        asideVisible.value=!asideVisible.value
+      }
+    }
+    return {asideVisible,toggleMain}
   },
   components:{TopNav}
 }

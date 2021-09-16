@@ -2,7 +2,7 @@
   <div class="topNavAndBanner">
     <TopNav class="topNav"/>
     <div class="banner">
-      <div class="image"><img src="src/assets/image/logo.png"  alt=""  width="200"></div>
+      <div class="image"><img src="../assets/image/logo.png"  alt=""  width="200"></div>
       <h1>Li UI</h1>
       <h2>一个厉害的UI框架</h2>
       <p class="actions">
@@ -52,7 +52,7 @@ export default {
     width: 800px;
     >ul{
       >li{
-        width: 50%;
+        width: 33.33%;
       }
     }
   }
@@ -63,6 +63,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     >li {
+      padding: 0 16px;
       width: 400px;
       margin: 16px 0;
       display: grid;
